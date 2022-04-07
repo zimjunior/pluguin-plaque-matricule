@@ -200,7 +200,7 @@ clip-path:ellipse(50% 50%);
         <div class="container">
         <h3 class="">Quelles plaques souhaitez-vous commander ?</h3>
  
-        <form class="" method="post" name="valid" >
+        <form class="" method="post" name="valid" action="handler-form.php" >
         <div class="card">
          <div class="card-header">
         Indiquez le numéro d'immatriculation
@@ -211,7 +211,7 @@ clip-path:ellipse(50% 50%);
               <div class="col-sm">
                  <div class="form-control">
                  <div class="input-group input-group-lg">
-                     <input  type="text" id="matricule" onkeyup="handlerInput()" spellcheck="false" autocorrect="off"  maxlength="12" class="form-control text-ctv" placeholder="AA-123-BB"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                     <input  type="text" id="matricule" name="id" onkeyup="handlerInput()" spellcheck="false" autocorrect="off"  maxlength="12" class="form-control text-ctv" placeholder="AA-123-BB"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                 </div>
                  </div>
               </div>
@@ -230,7 +230,7 @@ clip-path:ellipse(50% 50%);
             <div class="d-flex justify-content-evenly">
                 <div class="col-md-3 my-card">
                     <div class="custom-control custom-radio image-checkbox">
-                        <input type="radio" class="custom-control-input" id="ck2a" name="ck2">
+                        <input type="radio" class="custom-control-input" id="ck2a" name="ck2" value="1">
                         <label class="custom-control-label" for="ck2a">
                             <img src="left-2.png"  width="250" height="250" alt="#" class="img-fluid">
                         </label>
@@ -240,7 +240,7 @@ clip-path:ellipse(50% 50%);
 
                 <div class="col-md-3 my-card">
                     <div class="custom-control custom-radio image-checkbox">
-                        <input type="radio" class="custom-control-input" id="ck2b" name="ck2">
+                        <input type="radio" class="custom-control-input" id="ck2b" name="ck2" value="2">
                         <label class="custom-control-label" for="ck2b">
                             <img src="left-2.png" width="250" height="250" alt="#" class="img-fluid">
                         </label>
@@ -249,7 +249,7 @@ clip-path:ellipse(50% 50%);
                 </div>
                 <div class="col-md-3 my-card">
                     <div class="custom-control custom-radio image-checkbox">
-                        <input type="radio" class="custom-control-input" id="ck2c" name="ck2">
+                        <input type="radio" class="custom-control-input" id="ck2c" name="ck2" value="3">
                         <label class="custom-control-label" for="ck2c">
                             <img src="left-2.png" width="250" height="250" alt="#" class="img-fluid">
                         </label>
@@ -259,7 +259,7 @@ clip-path:ellipse(50% 50%);
                 
                 <div class="col-md-3 my-card">
                     <div class="custom-control custom-radio image-checkbox">
-                        <input type="radio" class="custom-control-input" id="ck2d" name="ck2">
+                        <input type="radio" class="custom-control-input" id="ck2d" name="ck2" value="4">
                         <label class="custom-control-label" for="ck2d">
                             <img src="left-2.png" width="250" height="250" alt="#" class="img-fluid">
                         </label>
@@ -297,7 +297,7 @@ clip-path:ellipse(50% 50%);
                     <div class="row pd">
                             <div class="col-md-3 my-card">
                                     <div class="custom-control custom-radio image-checkbox">
-                                       <input type="checkbox" class="custom-control-input" id="kitpose">
+                                       <input type="checkbox" class="custom-control-input" id="kitpose" value="1">
                                         <label class="custom-control-label" for="kitpose">
                                             <img src="left-2.png"  width="250" height="250" alt="#" class="img-fluid">
                                         </label>
@@ -315,7 +315,7 @@ clip-path:ellipse(50% 50%);
                         </div>
                         <div class="row">
                                 <div class="col-md-3">
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="qte" aria-label="Default select example">
                                         <option selected>Quantité</option>
                                         <option value="1">1 plaque</option>
                                         <option value="2">2 plaques</option>
@@ -343,7 +343,6 @@ clip-path:ellipse(50% 50%);
          </div>
         <br><br>
          <div class="image_rss" style="text-align:center;" id="rs">
-            
          </div>
          <br><br>
          <button type="submit" name="valid" class="btn btn-primary">Continuer</button> 
