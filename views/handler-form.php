@@ -23,19 +23,6 @@ function add_data($tab){
 }
 if(isset($_POST['valid'])){
     $db = new Mysql();
-   // $con = $db->myCon();
-
-    // //var_dump($con);
-    // $items = $db -> selectAll("wp_options");
-    // if ($items->num_rows > 0){
-    //     while($row = $items->fetch_assoc()) {
-    //         echo "id: " . $row["option_id"]. "<br>";
-    //       }
-    // }
-   
-     
-    // $tab = [];
-
     $tab[0] = "AA-235-B4";
     $tab[1] = 1;
     $tab[2] = true;
@@ -48,8 +35,6 @@ if(isset($_POST['valid'])){
     $tab[9] = "kndiaye@jaba.store";
     $tab[10] = "type1";
    
-    // $format = array('%s','%d');
-
     $sql = "INSERT INTO wp_demande_plaques 
             (`demande-plaque-number`,`demande-plaque-qte`,`demande-plaque-kitpose`
             ,`demande-plaque-region`,`demande-plaque-num-dep`,`demande-plaque-text`
@@ -57,15 +42,25 @@ if(isset($_POST['valid'])){
             ,`demande-plaque-name-customer`,`demande-plaque-email`,`demande-plaque-type-auto`)
            VALUES('$tab[0]', 1, TRUE, '$tab[3]', 15, '$tab[5]', '$tab[6]', FALSE, '$tab[8]',  '$tab[9]', '$tab[10]') ";
    
-   $res =  $db->insertInto( $sql);
+     $res =  $db->insertInto( $sql);
+
+     var_dump($res["res"]);
   
   
 } ?>
 <?php 
-if($res == true){
-      
-        
+if($res["res"] == true){
 
+    //$query = "SELECT * FROM wp_demande_plaques wp WHERE wp.id = {$res["last_id"]}";
+    $table_name = "wp_demande_plaques";
+    $rowname = 'id';
+    $operator = '=';
+    $valueType = 'int';
+    $res_query = $db -> selectWhere($table_name, $rowname, $operator, $res["last_id"], $valueType);
+    if ($res_query -> num_rows > 0){
+      $row = $res_query -> fetch_assoc();
+      var_dump($row);
+    }        
     ?>
       <html>
         <head> 
@@ -263,7 +258,8 @@ clip-path:ellipse(50% 50%);
         </body>
         </html>  
 <?php
-     echo "retourner a la place";
+    
+    // integration de woocomerce
 }
 else {
 

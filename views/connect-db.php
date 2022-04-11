@@ -60,8 +60,10 @@ class Mysql extends Dbconfig {
        
         
     }
+   
 
     function selectWhere($tableName,$rowName,$operator,$value,$valueType)   {
+        $this->connectionString = $this -> myCon();
         $this -> sqlQuery = 'SELECT * FROM '.$tableName.' WHERE '.$rowName.' '.$operator.' ';
         if($valueType == 'int') {
             $this -> sqlQuery .= $value;
@@ -69,7 +71,7 @@ class Mysql extends Dbconfig {
         else if($valueType == 'char')   {
             $this -> sqlQuery .= "'".$value."'";
         }
-        $this -> dataSet = mysqli_query($this -> sqlQuery,$this -> connectionString);
+        $this -> dataSet = $this -> connectionString -> query($this -> sqlQuery);
         $this -> sqlQuery = NULL;
         return $this -> dataSet;
         #return $this -> sqlQuery;
@@ -77,7 +79,12 @@ class Mysql extends Dbconfig {
 
     function insertInto ($sql){
         $this->connectionString = $this -> myCon();
-        return $this -> connectionString -> query($sql);  
+        $res =  $this -> connectionString -> query($sql);
+         $to_return = [
+             "res" => $res,
+             "last_id" => $this -> connectionString -> insert_id
+         ];  
+        return   $to_return ;
     }
    
 

@@ -42,8 +42,10 @@ function initialize(){
 				`demande-plaque-text` varchar(50)  NOT NULL,
 				`demande-plaque-materiaux` varchar(50) NOT NULL,
 				`demande-plaque-status` int(9) NOT NULL,
-				`demande-plaque-name-customer` varchar(50) NOT NULL,
+				`demande-plaque-name-customer` varchar(50)  NULL,
 				`demande-plaque-email` varchar(50) NOT NULL,
+				`demande-plaque-price` int(9) NULL,
+				`demande-plaque-etat` boolean DEFAULT false,
 				PRIMARY KEY  (ID)
 		) $charset_collate;";
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
